@@ -1,0 +1,60 @@
+let textheader = "Метод сортування: "
+
+function bubble() {
+  console.log("bubble");
+  document.getElementById("header").innerHTML = textheader + "bubble";
+
+  next(1);
+}
+
+function insertion() {
+  console.log("insertion");
+  document.getElementById("header").innerHTML = textheader + "insertion";
+}
+
+let arr = [];
+for (var i = 1; i <= 10; i++) {
+  arr[i] = 0;
+}
+
+function random() {
+  for (var i = 1; i <= 10; i++) {
+    arr[i] = Math.floor(Math.random() * 10);
+    // arr[i] = 10 - i;
+    document.getElementById("num" + i).innerHTML = arr[i];
+    console.log(arr[i]);
+  }
+}
+
+var interval;
+
+function next(i) {
+  setTimeout (function() {
+
+    // console.log("i ==== " + i);
+    next2(1);
+
+    if (i <= 8) {
+      next(i + 1);
+    }
+  }, 1000);
+}
+function next2(j) {
+  setTimeout (function () {
+    let l;
+    if (arr[j] > arr[j + 1]) {
+      l = arr[j];
+      arr[j] = arr[j + 1];
+      arr[j + 1] = l;
+    }
+    document.getElementById("num" + parseInt(j + 1)).innerHTML = arr[j + 1];
+    document.getElementById("num" + j).innerHTML = arr[j];
+    // console.log("j = " + j);
+    console.log(arr);
+
+
+    if (j <= 8) {
+      next2(j + 1);
+    }
+  }, 1000);
+}
